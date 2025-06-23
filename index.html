@@ -51,6 +51,14 @@
 
     const webhookURL = "https://hook.us2.make.com/4kud91ltgqmky8dmigzudejrplpqm9uq"; 
 
+    input.addEventListener("input", () => {
+      setTimeout(() => {
+        if (input.value.trim()) {
+          form.dispatchEvent(new Event("submit"));
+        }
+      }, 150); 
+    });
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const serial = input.value.trim();
