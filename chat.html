@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Chatbot</title>
+  <title>ECP | AI Chatbot</title>
   <link rel="stylesheet" href="chat.css" />
 
 </head>
@@ -12,7 +12,7 @@
   <div id="chatbox"></div>
   <div id="inputBox">
     <input id="userInput" type="text" placeholder="Ask a question..." autofocus />
-    <button onclick="sendMessage()">Send</button>
+    <button style="padding-left: 1rem; padding-right:1rem" onclick="sendMessage()">Send</button>
   </div>
 
   <script>
@@ -67,7 +67,6 @@
         });
 
       document.getElementById('typingBubble')?.remove();
-
 
         const data = await response.json();
         const reply = data?.reply || "No response.";
