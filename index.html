@@ -66,10 +66,8 @@
         console.log(JSON.stringify({ serial }));
 
         try {
-            const res = await fetch(webhookURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ serial })
+            const res = await fetch(`${webhookURL}?sn=${encodeURIComponent(serial)}`, {
+              method: "GET"
             });
 
             if (res.ok) {
