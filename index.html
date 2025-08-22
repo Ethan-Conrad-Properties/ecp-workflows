@@ -34,10 +34,10 @@
 <body>
     <form id="qrForm">
         <input
-        id="serialInput"
-        name="serial"
+        id="barcodeInput"
+        name="barcode"
         type="text"
-        placeholder="Scan or type serial number"
+        placeholder="Scan or type barcode number"
         autofocus
         autocomplete="off"
         />
@@ -46,7 +46,7 @@
 
     <script>
         const form = document.getElementById("qrForm");
-        const input = document.getElementById("serialInput");
+        const input = document.getElementById("barcodeInput");
         const status = document.getElementById("status");
 
         const webhookURL = "https://n8n.srv945784.hstgr.cloud/webhook/0f5d7b94-bbfa-41ca-a63e-fd819e451ccd"; 
@@ -61,17 +61,17 @@
 
         form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const serial = input.value.trim();
-        if (!serial) return;
-        console.log(JSON.stringify({ serial }));
+        const barcode = input.value.trim();
+        if (!barcode) return;
+        console.log(JSON.stringify({ barcode }));
 
         try {
-            const res = await fetch(`${webhookURL}?sn=${encodeURIComponent(serial)}`, {
+            const res = await fetch(`${webhookURL}?barcode=${encodeURIComponent(barcode)}`, {
               method: "GET"
             });
 
             if (res.ok) {
-            status.textContent = `✅ Sent: ${serial}`;
+            status.textContent = `✅ Sent: ${barcode}`;
             } else {
             status.textContent = "❌ Failed to send.";
             }
